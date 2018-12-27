@@ -10,9 +10,8 @@ let checkNotInRes = function (a, res) {
 let dfs = function (nums, res, cur) {
   let a = [...cur];
   a.sort();
-  if (checkNotInRes(a, res)) {
-    res.push(a);
-  }
+  res.push(a);
+
   for(let i = 0; i < nums.length; i++) {
     if (cur.indexOf(nums[i]) === -1) {
       cur.push(nums[i]);
