@@ -7,9 +7,7 @@ let checkNotInRes = function (a, res) {
   return false;
 }
 
-let dfs = function (nums, res, cur) {
-  let a = [...cur];
-  a.sort();
+let dfs = function (nums, res, cur, a = []) {
   res.push(a);
 
   for(let i = 0; i < nums.length; i++) {
@@ -18,7 +16,7 @@ let dfs = function (nums, res, cur) {
       let a = [...cur];
       a.sort();
       if (checkNotInRes(a, res)) {
-        dfs(nums, res, cur);
+        dfs(nums, res, cur, a);
       }
       cur.pop();
     }
