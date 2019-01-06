@@ -12,7 +12,6 @@ var MinStack = function() {
  * @return {void}
  */
 MinStack.prototype.push = function(x) {
-  debugger
   let lastMin = this.length > 0 ? this.min[this.length - 1] : Infinity;
   this.stack[this.length] = x;
   this.min[this.length] = Math.min(lastMin, x);
