@@ -6,7 +6,7 @@ function countPrimes(n: number): number {
     if(table[i]) {
       ans++;
       
-      for(let j = i + i; j < n; j += i) {
+      for(let j = i * i; j < n; j += i) {
         table[j] = 0;
       }
     }
