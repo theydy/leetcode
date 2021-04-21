@@ -1,25 +1,36 @@
 function threeSum(nums: number[]): number[][] {
-  const map = new Map<number, number>()
-  const res: number[][] = [], has = new Map<string, boolean>();
-
-  nums.map(num => map.set(num, (map.get(num) || 0) + 1));
+  const res: number[][] = [];
+  nums.sort((a, b) => a - b);
 
   for(let i = 0; i < nums.length; i++) {
-    for(let j = i + 1; j < nums.length; j++) {
-      const sum = 0 - nums[i] - nums[j];
-      const target = [nums[i], nums[j], sum].sort();
-      const key = target.join(',');
+    if (nums[i] > 0) return res;
+    if (nums[i] === nums[i - 1]) continue;
 
-      map.set(nums[i], (map.get(nums[i]) || 0) -1);
-      map.set(nums[j], (map.get(nums[j]) || 0) -1);
+    let l = i + 1;
+    let r = nums.length - 1;
 
-      if(map.get(sum) > 0 && !has.has(key)) {
-        res.push(target);
-        has.set(key, true);
+    while(l < r) {
+      const sum = nums[i] + nums[l] + nums[r];
+
+      if (sum === 0) {
+        res.push([nums[i], nums[l], nums[r]]);
+
+        while(l < r && nums[l] === nums[l + 1]) {
+          l++;
+        }
+
+        while(l < r && nums[r] === nums[r - 1]) {
+          r--;
+        }
+
+        l++;
+        r--;
+        
+      } else if (sum > 0) {
+        r--;
+      } else {
+        l++;
       }
-
-      map.set(nums[i], (map.get(nums[i]) || 0) + 1);
-      map.set(nums[j], (map.get(nums[j]) || 0) + 1);
     }
   }
 
