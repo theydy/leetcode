@@ -13,18 +13,6 @@
  */
 
 function maxDepth(root: TreeNode | null): number {
-  let deep = 0;
-
-  const traverse = (root: TreeNode | null, dept: number = 1) => {
-    if (!root) return;
-
-    deep = Math.max(dept, deep);
-
-    traverse(root.left, dept + 1);
-    traverse(root.right, dept + 1);
-  }
-
-  traverse(root);
-
-  return deep;
+  if (!root) return 0;
+  return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
 };
