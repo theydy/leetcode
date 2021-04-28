@@ -13,8 +13,6 @@
  */
 
 function binaryTreePaths(root: TreeNode | null): string[] {
-  if (!root) return [''];
-
   let res: string[] = [];
 
   const traverse = (root: TreeNode | null, paths: string = '') => {
