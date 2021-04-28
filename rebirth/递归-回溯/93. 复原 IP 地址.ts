@@ -14,6 +14,7 @@ function restoreIpAddresses(s: string): string[] {
       if (parseInt(bit) <= 255) {
         if (dot === 3 && i === s.length) {
           res.push((path + '.' + bit).slice(1));
+          return;
         }
         dfs(dot + 1, i, path + '.' + bit);
       }
