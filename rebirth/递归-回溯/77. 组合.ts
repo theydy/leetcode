@@ -7,7 +7,7 @@ function combine(n: number, k: number): number[][] {
       return;
     }
 
-    for (let i = start; i <= n; i++) {
+    for (let i = start; i <= n - k + cur.length + 1; i++) {
       cur.push(i);
       dfs(i + 1, cur);
       cur.pop();
