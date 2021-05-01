@@ -9,8 +9,8 @@ function numSquares(n: number): number {
   for(let i = 3; i <= n; i++) {
     dp[i] = i;
     for(let j = 0; j < spuares.length; j++) {
-      if (n - spuares[j] < 0) continue;
-      dp[i] = Math.min(1 + dp[n - spuares[j]], dp[i]);
+      if (i - spuares[j] < 0) continue;
+      dp[i] = Math.min(1 + dp[i - spuares[j]], dp[i]);
     }
   }
 
