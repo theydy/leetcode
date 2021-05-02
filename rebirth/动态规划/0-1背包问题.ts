@@ -6,17 +6,17 @@
  */
 function Knapsack01(W: number[], V: number[], C: number): number {
   const length = W.length;
-  const memo: number[][] = Array.from({ length }).map(_ => []);
+  const memo: number[] = [];
 
-  for(let i = 0; i < length; i++) {
-    for(let j = 0; j <= C; j++) {
-      if (i === 0) {
-        memo[i][j] = j > W[i] ? V[i] : 0;
-      } else {
-        memo[i][j] = j >= W[i] ? Math.max(memo[i - 1][j], V[i] + memo[i - 1][j - W[i]]) : memo[i - 1][j];
-      }
+  for(let i = 0; i <= C; i++) {
+    memo[i] = i > W[0] ? V[i] : 0;
+  }
+
+  for(let i = 1; i < length; i++) {
+    for(let j = C; j >= 0; j--) {
+      memo[j] = j >= W[i] ? Math.max(memo[j], V[i] + memo[j - W[i]]) : memo[j];
     }
   }
   
-  return memo[length - 1][C];
+  return memo[C];
 }
