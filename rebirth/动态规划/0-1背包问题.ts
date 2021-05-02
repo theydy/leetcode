@@ -13,8 +13,8 @@ function Knapsack01(W: number[], V: number[], C: number): number {
   }
 
   for(let i = 1; i < length; i++) {
-    for(let j = C; j >= 0; j--) {
-      memo[j] = j >= W[i] ? Math.max(memo[j], V[i] + memo[j - W[i]]) : memo[j];
+    for(let j = C; j >= W[i]; j--) {
+      memo[j] =  Math.max(memo[j], V[i] + memo[j - W[i]]);
     }
   }
   
